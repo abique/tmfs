@@ -1,0 +1,6 @@
+fuse-time-machine
+
+Fuse time machine is a read-only virtual filesystem which helps you to
+read your Apple's time machine backup.
+
+Enjoy!
