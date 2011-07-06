@@ -4,3 +4,15 @@ Time Machine File System is a read-only virtual filesystem which helps you to
 read your Apple's time machine backup.
 
 Enjoy!
+
+
+Time Machine structure :
+
+${hfs_root}/.HFS+ Private Directory Data/dir_${node_id}/ <- real data
+${hfs_root}/Backups.backupdb/$comp_name/${date}/Macintosh HD/ <- snapshot root
+${hfs_root}/Backups.backupdb/$comp_name/${date}/Macintosh HD/.../File with hardlink count > XXXX => hardlink count = node_id
+
+
+Our representation :
+
+/${comp_name}/${date}/${Real root}
