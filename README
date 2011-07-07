@@ -1,17 +1,43 @@
-tmfs
+__/\\\\\\\\\\\\\\\___/\\\\____________/\\\\___/\\\\\\\\\\\\\\\______/\\\\\\\\\\\___
+ _\///////\\\/////___\/\\\\\\________/\\\\\\__\/\\\///////////_____/\\\/////////\\\_
+  _______\/\\\________\/\\\//\\\____/\\\//\\\__\/\\\_______________\//\\\______\///__
+   _______\/\\\________\/\\\\///\\\/\\\/_\/\\\__\/\\\\\\\\\\\________\////\\\_________
+    _______\/\\\________\/\\\__\///\\\/___\/\\\__\/\\\///////____________\////\\\______
+     _______\/\\\________\/\\\____\///_____\/\\\__\/\\\______________________\////\\\___
+      _______\/\\\________\/\\\_____________\/\\\__\/\\\_______________/\\\______\//\\\__
+       _______\/\\\________\/\\\_____________\/\\\__\/\\\______________\///\\\\\\\\\\\/___
+        _______\///_________\///______________\///___\///_________________\///////////_____
+
+
 
 Time Machine File System is a read-only virtual filesystem which helps you to
 read your Apple's time machine backup.
 
+It's actually not perfect, feel free to report bugs at https://github.com/babali/tmfs/issues
+
 Enjoy!
 
 
+How to use it ?
+~~~~~~~~~~~~~~~
+
+First you have to mount your HFS partition, by doing something like:
+mount /dev/sdXX /mnt/hfs-root
+
+then do as root:
+
+tmfs /mnt/hfs-root /mnt/tm-root -ouid=$(id -u my_user),gid=$(id -g my_user),allow_other
+
+then as a normal user do, go to the directory /mnt/tm-root/ and enjoy your data! :-)
+
+Internals
+~~~~~~~~~
+
 Time Machine structure :
 
-${hfs_root}/.HFS+ Private Directory Data/dir_${node_id}/ <- real data
 ${hfs_root}/Backups.backupdb/$comp_name/${date}/${disk_name}/ <- snapshot root
-${hfs_root}/Backups.backupdb/$comp_name/${date}/${disk_name}/.../File with hardlink count > XXXX => hardlink count = node_id
-
+${hfs_root}/Backups.backupdb/$comp_name/${date}/${disk_name}/.../File => hardlink count = node_id
+${hfs_root}/.HFS+ Private Directory Data/dir_${node_id}/File <- real data
 
 Our representation :
 
