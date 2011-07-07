@@ -49,7 +49,8 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
 make
 DESTDIR=install-test make install
-# then if the installation looks ok to you in install-test/ do
+# then if the installation looks ok to you in install-test/ do make install as root
+su
 make install
 
 
