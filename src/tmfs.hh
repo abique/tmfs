@@ -19,20 +19,21 @@
 # include <map>
 # include <string>
 # include <vector>
+# include <sstream>
 
-struct tmfs_computer {
-  tmfs_computer(const std::string & name, const std::string & root);
-  std::string name_;
-  std::string root_;
-  std::vector<std::string> dates_;
-};
+# include <boost/filesystem.hpp>
+
+namespace bfs = boost::filesystem;
 
 struct tmfs {
-  std::string  hfs_root;
-  uid_t        uid;
-  gid_t        gid;
-  std::map<std::string, tmfs_computer*> comps;
+  inline const std::string & hfs_root() const { return hfs_root_; }
+
+  std::string  hfs_root_;
+  uid_t        uid_;
+  gid_t        gid_;
 };
+
+std::string get_real_path(const std::string & path);
 
 extern struct tmfs g_tmfs;
 
@@ -40,5 +41,7 @@ int tmfs_getattr(const char *path, struct stat *stbuf);
 int tmfs_opendir(const char *, struct fuse_file_info *);
 int tmfs_readdir(const char *, void *, fuse_fill_dir_t, off_t,
                  struct fuse_file_info *);
+int tmfs_read(const char * path, char * buf, size_t nbytes, off_t offset,
+              struct fuse_file_info * fi);
 
 #endif /* !TMFS_HH */
