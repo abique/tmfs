@@ -13,7 +13,8 @@ __/\\\\\\\\\\\\\\\___/\\\\____________/\\\\___/\\\\\\\\\\\\\\\______/\\\\\\\\\\\
 Time Machine File System is a read-only virtual filesystem which helps you to
 read your Apple's time machine backup.
 
-It's actually not perfect, feel free to report bugs at https://github.com/babali/tmfs/issues
+It's actually not perfect, feel free to report bugs or suggestions at
+https://github.com/babali/tmfs/issues
 
 Enjoy!
 
@@ -28,7 +29,7 @@ then do as root:
 
 tmfs /mnt/hfs-root /mnt/tm-root -ouid=$(id -u my_user),gid=$(id -g my_user),allow_other
 
-then as a normal user do, go to the directory /mnt/tm-root/ and enjoy your data! :-)
+then as a normal user, go to the directory /mnt/tm-root/ and enjoy your data! :-)
 
 
 Dependancies
@@ -38,6 +39,7 @@ Dependancies
  - cmake
  - boost >= 1.46.0
  - fuse
+
 
 How to build and install it ?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,6 +51,7 @@ make
 DESTDIR=install-test make install
 # then if the installation looks ok to you in install-test/ do
 make install
+
 
 Internals
 ~~~~~~~~~
