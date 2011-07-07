@@ -25,7 +25,6 @@ std::string get_real_path(const std::string & str)
       std::ostringstream os;
       os << g_tmfs.hfs_root() << "/.HFS+ Private Directory Data\r/dir_" << stbuf.st_nlink;
       real_path = os.str();
-      std::cout << "--------- " << real_path << std::endl;
     }
   }
   return real_path.string();

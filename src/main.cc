@@ -1,7 +1,5 @@
 #include "tmfs.hh"
 
-#include <sstream>
-
 struct tmfs g_tmfs;
 
 int main(int argc, char ** argv)

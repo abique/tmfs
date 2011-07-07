@@ -5,8 +5,6 @@ int tmfs_readdir(const char * path, void * buf, fuse_fill_dir_t filler_cb, off_t
 {
   std::string real_path = get_real_path(path);
 
-  std::cout << " ## readdir " << bfs::path(path) << " -> " << real_path << std::endl;
-
   if (!bfs::is_directory(real_path))
     return -ENOTDIR;
 
