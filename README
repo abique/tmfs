@@ -30,6 +30,18 @@ tmfs /mnt/hfs-root /mnt/tm-root -ouid=$(id -u my_user),gid=$(id -g my_user),allo
 
 then as a normal user do, go to the directory /mnt/tm-root/ and enjoy your data! :-)
 
+
+How to build and install it ?
+~~~~~~~~~~~~~~~~~
+
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..
+make
+DESTDIR=install-test make install
+# then if the installation looks ok to you in install-test/ do
+make install
+
 Internals
 ~~~~~~~~~
 

@@ -24,3 +24,7 @@ add_executable(tmfs
 
 link_directories(${FUSE_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS})
 target_link_libraries(tmfs ${FUSE_LIBRARIES} ${Boost_LIBRARIES})
+install(TARGETS tmfs RUNTIME DESTINATION bin
+  PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+              GROUP_READ GROUP_EXECUTE
+              WORLD_READ WORLD_EXECUTE)
