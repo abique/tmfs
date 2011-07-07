@@ -22,8 +22,11 @@ std::string get_real_path(const std::string & str)
   for (; it != clean_path.end(); ++it)
   {
     real_path /= *it;
+    // Does the file exists ?
     if (stat(real_path.c_str(), &stbuf))
       return real_path.string();
+
+    // Is the file a dir_id ?
     if (S_ISREG(stbuf.st_mode) && stbuf.st_size == 0 && stbuf.st_nlink > 0)
     {
       // build the real path
