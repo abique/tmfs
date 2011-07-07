@@ -23,25 +23,27 @@
 
 # include <boost/filesystem.hpp>
 
+// go fast :>
 namespace bfs = boost::filesystem;
 
+/** this is the global structure of tmfs */
 struct tmfs {
   inline const std::string & hfs_root() const { return hfs_root_; }
+  static inline tmfs & instance() { static tmfs i; return i; }
 
-  std::string  hfs_root_;
-  uid_t        uid_;
-  gid_t        gid_;
+  std::string  hfs_root_; // the hfs root
 };
 
+/** transforms a virtual paths in the tmfs's root to the real path in hfs's root */
 std::string get_real_path(const std::string & path);
 
-extern struct tmfs g_tmfs;
-
-int tmfs_getattr(const char *path, struct stat *stbuf);
-int tmfs_opendir(const char *, struct fuse_file_info *);
-int tmfs_readdir(const char *, void *, fuse_fill_dir_t, off_t,
-                 struct fuse_file_info *);
+/** fuse functions
+ * @{ */
+int tmfs_getattr(const char * path, struct stat *stbuf);
+int tmfs_readdir(const char * path, void * buf, fuse_fill_dir_t filler_callback,
+                 off_t offset, struct fuse_file_info * fi);
 int tmfs_read(const char * path, char * buf, size_t nbytes, off_t offset,
               struct fuse_file_info * fi);
+/** @} */
 
 #endif /* !TMFS_HH */

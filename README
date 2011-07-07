@@ -36,8 +36,8 @@ Internals
 Time Machine structure :
 
 ${hfs_root}/Backups.backupdb/$comp_name/${date}/${disk_name}/ <- snapshot root
-${hfs_root}/Backups.backupdb/$comp_name/${date}/${disk_name}/.../File => hardlink count = node_id
-${hfs_root}/.HFS+ Private Directory Data/dir_${node_id}/File <- real data
+${hfs_root}/Backups.backupdb/$comp_name/${date}/${disk_name}/.../Folder => hardlink count = dir_id
+${hfs_root}/.HFS+ Private Directory Data/dir_${dir_id}/ <- real folder
 
 Our representation :
 

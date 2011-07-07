@@ -2,10 +2,13 @@
 
 std::string get_real_path(const std::string & str)
 {
+  // removes ../.././././//./ garbage
   bfs::path clean_path = bfs::absolute(str, "/");
-  bfs::path real_path(g_tmfs.hfs_root());
-  real_path /= "Backups.backupdb";
+  bfs::path real_path(tmfs::instance().hfs_root());
+  real_path /= "Backups.backupdb"; // ${hfs_root}/Backups.backupdb/
 
+  // ok let's copy the 4 first part of the virtual path
+  // (/, ${comp_name}, ${date}, ${disk_name})
   auto it = clean_path.begin();
   for (int i = 0; i < 4; ++i, ++it)
   {
@@ -14,6 +17,7 @@ std::string get_real_path(const std::string & str)
     real_path /= *it;
   }
 
+  // let's resolv all the parts of the path
   struct stat stbuf;
   for (; it != clean_path.end(); ++it)
   {
@@ -22,9 +26,14 @@ std::string get_real_path(const std::string & str)
       return real_path.string();
     if (S_ISREG(stbuf.st_mode) && stbuf.st_size == 0 && stbuf.st_nlink > 0)
     {
+      // build the real path
       std::ostringstream os;
-      os << g_tmfs.hfs_root() << "/.HFS+ Private Directory Data\r/dir_" << stbuf.st_nlink;
-      real_path = os.str();
+      os << tmfs::instance().hfs_root() << "/.HFS+ Private Directory Data\r/dir_" << stbuf.st_nlink;
+
+      // check if it's really a ${dir_id}
+      if (stat(os.str().c_str(), &stbuf))
+        continue; // it's not
+      real_path = os.str(); // it is
     }
   }
   return real_path.string();
