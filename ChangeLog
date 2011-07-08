@@ -1,4 +1,6 @@
 2011-07-08  Alexandre Bique  <bique.alexandre@gmail.com>
 
+	* release: 2
+	* dependancies: switched from C++0x to standard C++
 	* release: 1
 
