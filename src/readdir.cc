@@ -27,7 +27,7 @@ int tmfs_readdir(const char * path, void * buf, fuse_fill_dir_t filler_cb, off_t
   while ((entry = readdir(dir)))
   {
     // stat the file pointed by entry
-    auto path = bfs::path(real_path) / entry->d_name;
+    bfs::path path = bfs::path(real_path) / entry->d_name;
     if (stat(path.c_str(), &stbuf))
       continue;
     stbuf.st_mode |= 0755;

@@ -38,8 +38,8 @@ then as a normal user, go to the directory /mnt/tm-root/ and enjoy your data! :-
 Dependancies
 ~~~~~~~~~~~~
 
- - C++0x
- - cmake
+ - C++
+ - cmake >= 2.8
  - boost >= 1.46.0
  - fuse
 

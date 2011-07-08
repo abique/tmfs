@@ -9,7 +9,7 @@ std::string get_real_path(const std::string & str)
 
   // ok let's copy the 4 first part of the virtual path
   // (/, ${comp_name}, ${date}, ${disk_name})
-  auto it = clean_path.begin();
+  bfs::path::const_iterator it = clean_path.begin();
   for (int i = 0; i < 4; ++i, ++it)
   {
     if (it == clean_path.end())
