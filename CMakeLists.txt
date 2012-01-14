@@ -6,7 +6,7 @@ set(Boost_USE_STATIC_LIBS        OFF)
 set(Boost_USE_MULTITHREADED      OFF)
 set(Boost_USE_STATIC_RUNTIME     OFF)
 set(Boost_DEBUG                  OFF)
-find_package(Boost 1.46 COMPONENTS filesystem)
+find_package(Boost 1.46 COMPONENTS system filesystem)
 
 find_package(PkgConfig)
 pkg_check_modules(FUSE REQUIRED fuse)
