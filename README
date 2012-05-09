@@ -14,10 +14,10 @@ Time Machine File System is a read-only virtual filesystem which helps you to
 read your Apple's time machine backup.
 
 This filesystem does not targets performances, it has been written for a friend who
-has lost its macbook and wants to recover its data on Linux.
+has lost his macbook and wants to recover its data on Linux.
 
 It's actually not perfect, feel free to report bugs or suggestions at
-https://github.com/babali/tmfs/issues
+https://github.com/abique/tmfs/issues
 
 Enjoy!
 
