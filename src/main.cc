@@ -16,13 +16,13 @@ int main(int argc, char ** argv)
 
   /* check that hfs_root is a directory */
   struct stat st;
-  if (lstat(argv[1], &st)) {
-    fprintf(stderr, "%s: %m\n", argv[1]);
+  if (lstat(tmfs::instance().hfs_root_.c_str(), &st)) {
+    fprintf(stderr, "%s: %m\n", tmfs::instance().hfs_root_.c_str());
     return 1;
   }
 
   if (!S_ISDIR(st.st_mode)) {
-    fprintf(stderr, "%s: is not a directory\n", argv[1]);
+    fprintf(stderr, "%s: is not a directory\n", tmfs::instance().hfs_root_.c_str());
     return 1;
   }
 
