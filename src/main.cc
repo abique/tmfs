@@ -14,6 +14,18 @@ int main(int argc, char ** argv)
   for (int i = 1; i < argc; ++i)
     argv[i] = argv[i + 1];
 
+  /* check that hfs_root is a directory */
+  struct stat st;
+  if (lstat(argv[1], &st)) {
+    fprintf(stderr, "%s: %m\n", argv[1]);
+    return 1;
+  }
+
+  if (!S_ISDIR(st.st_mode)) {
+    fprintf(stderr, "%s: is not a directory\n", argv[1]);
+    return 1;
+  }
+
   /* vtable setup */
   struct fuse_operations ops;
   memset(&ops, 0, sizeof (ops));
