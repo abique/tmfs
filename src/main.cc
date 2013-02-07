@@ -4,8 +4,8 @@ int main(int argc, char ** argv)
 {
   if (argc < 3)
   {
-    fprintf(stderr, "usage: %s: <HFS+ mount> <Time Machine Mount>"
-            " [fuse options]\n", argv[0]);
+    fprintf(stderr, "Usage: %s: <HFS+ mount point> <Time Machine mount point>"
+            " [FUSE options]\n", argv[0]);
     return 2;
   }
 
