@@ -2,8 +2,8 @@
 
 std::string get_real_path(const std::string & str)
 {
-  // removes ../.././././//./ garbage
-  bfs::path clean_path = bfs::absolute(str, "/");
+  bfs::path clean_path = bfs::path(str);
+
   bfs::path real_path(tmfs::instance().hfs_root());
   real_path /= "Backups.backupdb"; // ${hfs_root}/Backups.backupdb/
 
@@ -23,7 +23,7 @@ std::string get_real_path(const std::string & str)
   {
     real_path /= *it;
     // Does the file exists ?
-    if (stat(real_path.c_str(), &stbuf))
+    if (stat(real_path.string().c_str(), &stbuf))
       return real_path.string();
 
     // Is the file a dir_id ?

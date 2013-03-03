@@ -28,7 +28,7 @@ int tmfs_readdir(const char * path, void * buf, fuse_fill_dir_t filler_cb, off_t
   {
     // stat the file pointed by entry
     bfs::path file_path = bfs::path(path) / entry->d_name;
-    if (tmfs_getattr(file_path.c_str(), &stbuf))
+    if (tmfs_getattr(file_path.string().c_str(), &stbuf))
       continue;
     stbuf.st_mode |= 0755;
     // report the entry
