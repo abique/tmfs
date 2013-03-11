@@ -1,3 +1,10 @@
+2013-03-12  Alexandre Bique  <bique.alexandre@gmail.com>
+
+	* release: 4
+	* dependancies: need boost >= 1.42
+	* improves readme and help message
+	* handle hard-links inside of .HFS+ Private Directory Data
+
 2012-07-23  Alexandre Bique  <bique.alexandre@gmail.com>
 
 	* release: 3
