@@ -18,6 +18,7 @@ add_executable(tmfs
   src/main.cc
   src/readdir.cc
   src/read.cc
+  src/readlink.cc
   src/getattr.cc
   src/get_real_path.cc
 )

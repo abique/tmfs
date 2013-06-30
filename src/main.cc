@@ -33,6 +33,7 @@ int main(int argc, char ** argv)
   ops.read    = tmfs_read;
   ops.getattr = tmfs_getattr;
   ops.readdir = tmfs_readdir;
+  ops.readlink = tmfs_readlink;
 
   /* lets go */
   fuse_main(argc, argv, &ops, NULL);
