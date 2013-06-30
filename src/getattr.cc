@@ -7,7 +7,7 @@ int tmfs_getattr(const char *path, struct stat *stbuf)
 
   // and now just stat the real path
   memset(stbuf, 0, sizeof(struct stat));
-  if (stat(real_path.c_str(), stbuf))
+  if (lstat(real_path.c_str(), stbuf))
     return -errno;
   return 0;
 }

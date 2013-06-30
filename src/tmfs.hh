@@ -44,6 +44,7 @@ int tmfs_readdir(const char * path, void * buf, fuse_fill_dir_t filler_callback,
                  off_t offset, struct fuse_file_info * fi);
 int tmfs_read(const char * path, char * buf, size_t nbytes, off_t offset,
               struct fuse_file_info * fi);
+int tmfs_readlink(const char * path, char * buf, size_t size);
 /** @} */
 
 #endif /* !TMFS_HH */
