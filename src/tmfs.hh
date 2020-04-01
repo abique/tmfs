@@ -23,6 +23,8 @@
 
 #include <filesystem>
 
+namespace fs = std::filesystem;
+
 /** this is the global structure of tmfs */
 struct tmfs {
   inline const std::string & hfs_root() const noexcept { return hfs_root_; }
