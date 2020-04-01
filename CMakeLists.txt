@@ -19,8 +19,8 @@ add_executable(tmfs
   src/get_real_path.cc
 )
 
-link_directories(${FUSE_LIBRARY_DIRS} ${Boost_LIBRARY_DIRS})
-target_link_libraries(tmfs ${FUSE_LIBRARIES} ${Boost_LIBRARIES})
+link_directories(${FUSE_LIBRARY_DIRS})
+target_link_libraries(tmfs ${FUSE_LIBRARIES})
 install(TARGETS tmfs RUNTIME DESTINATION bin
   PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
               GROUP_READ GROUP_EXECUTE
