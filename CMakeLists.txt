@@ -1,12 +1,8 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.16)
 
 project(TMFS CXX)
 
-set(Boost_USE_STATIC_LIBS        OFF)
-set(Boost_USE_MULTITHREADED      OFF)
-set(Boost_USE_STATIC_RUNTIME     OFF)
-set(Boost_DEBUG                  OFF)
-find_package(Boost 1.42 COMPONENTS system filesystem)
+set(CMAKE_CXX_STANDARD 17)
 
 find_package(PkgConfig)
 pkg_check_modules(FUSE REQUIRED fuse)

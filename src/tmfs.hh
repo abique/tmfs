@@ -1,34 +1,30 @@
-#ifndef TMFS_HH
-# define TMFS_HH
+#pragma once
 
-# define FUSE_USE_VERSION 26
+#define FUSE_USE_VERSION 26
 
-# include <sys/time.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <errno.h>
-# include <dirent.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <dirent.h>
 
-# include <fuse.h>
+#include <fuse.h>
 
-# include <map>
-# include <string>
-# include <vector>
-# include <sstream>
+#include <map>
+#include <string>
+#include <vector>
+#include <sstream>
 
-# include <boost/filesystem.hpp>
-
-// go fast :>
-namespace bfs = boost::filesystem;
+#include <filesystem>
 
 /** this is the global structure of tmfs */
 struct tmfs {
-  inline const std::string & hfs_root() const { return hfs_root_; }
+  inline const std::string & hfs_root() const noexcept { return hfs_root_; }
   static inline tmfs & instance() { static tmfs i; return i; }
 
   std::string  hfs_root_; // the hfs root
@@ -46,5 +42,3 @@ int tmfs_read(const char * path, char * buf, size_t nbytes, off_t offset,
               struct fuse_file_info * fi);
 int tmfs_readlink(const char * path, char * buf, size_t size);
 /** @} */
-
-#endif /* !TMFS_HH */

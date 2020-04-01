@@ -2,14 +2,14 @@
 
 std::string get_real_path(const std::string & str)
 {
-  bfs::path clean_path = bfs::path(str);
+  auto clean_path = std::filesystem::path(str);
 
-  bfs::path real_path(tmfs::instance().hfs_root());
+  std::filesystem::path real_path(tmfs::instance().hfs_root());
   real_path /= "Backups.backupdb"; // ${hfs_root}/Backups.backupdb/
 
   // ok let's copy the 4 first part of the virtual path
   // (/, ${comp_name}, ${date}, ${disk_name})
-  bfs::path::const_iterator it = clean_path.begin();
+  auto it = clean_path.begin();
   for (int i = 0; i < 4; ++i, ++it)
   {
     if (it == clean_path.end())
