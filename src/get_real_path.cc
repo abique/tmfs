@@ -1,6 +1,6 @@
 #include "tmfs.hh"
 
-std::string get_real_path(const std::string & str)
+static std::string _get_real_path(const std::string & str)
 {
   auto clean_path = std::filesystem::path(str);
 
@@ -40,4 +40,11 @@ std::string get_real_path(const std::string & str)
     }
   }
   return real_path.string();
+}
+
+std::string get_real_path(const std::string & str)
+{
+  auto result = _get_real_path(str);
+  std::cout << "get_real_path(\"" << str << "\") -> "  << result << std::endl;
+  return result;
 }
