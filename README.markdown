@@ -37,7 +37,7 @@ Then as a normal user, go to the directory /mnt/tm-root/ and enjoy your data! :-
 Dependancies
 ------------
 
- - c++
+ - c++ 17
  - cmake >= 2.8
  - boost >= 1.42.0 (earlier versions may also work, but are untested)
  - fuse
