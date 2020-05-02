@@ -41,6 +41,8 @@ static std::string _get_real_path(const std::string & str)
 std::string get_real_path(const std::string & str)
 {
   auto result = _get_real_path(str);
+#ifndef NDEBUG
   std::cout << "get_real_path(\"" << str << "\") -> "  << result << std::endl;
+#endif
   return result;
 }
