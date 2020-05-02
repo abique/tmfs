@@ -2,16 +2,19 @@
 
 static std::string _get_real_path(const std::string & str)
 {
-  const auto clean_path = fs::path(str);
+  // use the relative path so that the real_path doesn't get replaced
+  const auto clean_path = fs::path(str).relative_path();
 
   fs::path real_path(tmfs::instance().hfs_root());
   real_path /= "Backups.backupdb"; // ${hfs_root}/Backups.backupdb/
 
-  // ok let's copy the 4 first part of the virtual path
-  // (/, ${comp_name}, ${date}, ${disk_name})
+  // ok let's copy the 3 first part of the virtual path
+  // (${comp_name}, ${date}, ${disk_name})
   auto it = clean_path.begin();
-  for (int i = 0; i < 4 && it != clean_path.end(); ++i, ++it)
+  for (int i = 0; i < 3 && it != clean_path.end(); ++i, ++it)
+  {
     real_path /= *it;
+  }
 
   // let's resolv all the parts of the path
   struct stat stbuf;
