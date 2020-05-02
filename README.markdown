@@ -38,8 +38,7 @@ Dependancies
 ------------
 
  - c++ 17
- - cmake >= 2.8
- - boost >= 1.42.0 (earlier versions may also work, but are untested)
+ - cmake >= 3.16
  - fuse
 
 How to build and install it?
