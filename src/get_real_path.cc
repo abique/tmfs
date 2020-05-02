@@ -12,9 +12,7 @@ static std::string _get_real_path(const std::string & str)
   // (${comp_name}, ${date}, ${disk_name})
   auto it = clean_path.begin();
   for (int i = 0; i < 3 && it != clean_path.end(); ++i, ++it)
-  {
     real_path /= *it;
-  }
 
   // let's resolv all the parts of the path
   struct stat stbuf;
@@ -44,6 +42,8 @@ static std::string _get_real_path(const std::string & str)
 std::string get_real_path(const std::string & str)
 {
   auto result = _get_real_path(str);
+#ifndef NDEBUG
   std::cout << "get_real_path(\"" << str << "\") -> "  << result << std::endl;
+#endif
   return result;
 }
