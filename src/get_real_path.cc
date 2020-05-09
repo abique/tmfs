@@ -20,7 +20,7 @@ static std::string _get_real_path(const std::string & str)
   {
     real_path /= *it;
     // Does the file exists ?
-    if (stat(real_path.string().c_str(), &stbuf))
+    if (lstat(real_path.string().c_str(), &stbuf))
       return real_path.string();
 
     // Is the file a dir_id ?
