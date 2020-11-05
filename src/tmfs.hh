@@ -27,10 +27,10 @@ namespace fs = std::filesystem;
 
 /** this is the global structure of tmfs */
 struct tmfs {
-  inline const std::string & hfs_root() const noexcept { return hfs_root_; }
+  inline const fs::path & hfs_root() const noexcept { return hfs_root_; }
   static inline tmfs & instance() { static tmfs i; return i; }
 
-  std::string  hfs_root_; // the hfs root
+  fs::path  hfs_root_; // the hfs root
 };
 
 /** transforms a virtual paths in the tmfs's root to the real path in hfs's root */

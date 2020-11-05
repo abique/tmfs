@@ -10,7 +10,7 @@ int main(int argc, char ** argv)
   }
 
   /* global structure setup */
-  tmfs::instance().hfs_root_ = argv[1];
+  tmfs::instance().hfs_root_ = fs::absolute(fs::path(argv[1]));
   --argc;
   for (int i = 1; i < argc; ++i)
     argv[i] = argv[i + 1];
