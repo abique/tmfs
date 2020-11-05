@@ -13,7 +13,7 @@ int tmfs_readdir(const char * path, void * buf, fuse_fill_dir_t filler_cb, off_t
   struct stat stbuf;
 
   // report ./ and ../
-  stbuf.st_mode = __S_IFDIR | 0755;
+  stbuf.st_mode = S_IFDIR | 0755;
   stbuf.st_nlink = 2;
   filler_cb(buf, ".", &stbuf, 0);
   filler_cb(buf, "..", &stbuf, 0);
