@@ -27,13 +27,13 @@ static std::string _get_real_path(const std::string & str)
     if (S_ISREG(stbuf.st_mode) && stbuf.st_size == 0 && stbuf.st_nlink > 0)
     {
       // build the real path
-      std::ostringstream os;
-      os << tmfs::instance().hfs_root() << "/.HFS+ Private Directory Data\r/dir_" << stbuf.st_nlink;
+      fs::path dir_path = tmfs::instance().hfs_root();
+      dir_path /= ".HFS+ Private Directory Data\r/dir_" + std::to_string(stbuf.st_nlink);
 
       // check if it's really a ${dir_id}
-      if (stat(os.str().c_str(), &stbuf))
+      if (stat(dir_path.c_str(), &stbuf))
         continue; // it's not
-      real_path = os.str(); // it is
+      real_path = dir_path; // it is
     }
   }
   return real_path.string();
